@@ -1,0 +1,38 @@
+<div style="max-width: 400px; margin: 40px auto; font-family: sans-serif; border: 1px solid #ccc; padding: 20px; border-radius: 8px;">
+  <h2>Registro de Funcionário</h2>
+  
+  <form [formGroup]="recordForm" (ngSubmit)="onSubmit()" style="display: flex; flex-direction: column; gap: 15px;">
+    <div>
+      <label>Nome *</label>
+      <input type="text" formControlName="name" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div>
+      <label>Departamento *</label>
+      <input type="text" formControlName="department" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div>
+      <label>Data de Referência *</label>
+      <input type="date" formControlName="reference_date" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div>
+      <label>Quantidade de Entregas *</label>
+      <input type="number" formControlName="deliveries" style="width: 100%; padding: 8px;" min="0">
+    </div>
+
+    <div>
+      <label>Observação (Opcional)</label>
+      <textarea formControlName="observation" style="width: 100%; padding: 8px;"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="recordForm.invalid" style="padding: 10px; background: #0056b3; color: white; border: none; cursor: pointer; border-radius: 4px;">
+      Enviar Registro
+    </button>
+  </form>
+
+  <div *ngIf="message" [ngStyle]="{'color': isError ? 'red' : 'green', 'margin-top': '15px', 'font-weight': 'bold'}">
+    {{ message }}
+  </div>
+</div>
